@@ -1,0 +1,110 @@
+{
+    "runId": "AutoML_b6f416b0-a964-40da-bfaa-4a40dda2c1af",
+    "runUuid": "4325ca57-1326-4a97-afe8-ce9c83721206",
+    "parentRunUuid": null,
+    "rootRunUuid": "4325ca57-1326-4a97-afe8-ce9c83721206",
+    "target": "ML-Cluster",
+    "status": "Running",
+    "parentRunId": null,
+    "createdTimeUtc": "2021-10-16T14:07:30.6191341+00:00",
+    "startTimeUtc": "2021-10-16T14:07:44.932Z",
+    "endTimeUtc": null,
+    "error": null,
+    "warnings": null,
+    "tags": {
+        "model_explain_run": "best_run",
+        "_aml_system_azureml.automlComponent": "AutoML"
+    },
+    "properties": {
+        "num_iterations": "1000",
+        "training_type": "TrainFull",
+        "acquisition_function": "EI",
+        "primary_metric": "AUC_weighted",
+        "train_split": "0",
+        "acquisition_parameter": "0",
+        "num_cross_validation": "5",
+        "target": "ML-Cluster",
+        "AMLSettingsJsonString": "{\"enable_early_stopping\":true,\"enable_ensembling\":false,\"enable_stack_ensembling\":false,\"ensemble_iterations\":15,\"enable_onnx_compatible_models\":false,\"max_cores_per_iteration\":-1,\"send_telemetry\":true,\"blacklist_algos\":[\"TensorFlowLinearClassifier\",\"TensorFlowDNN\"],\"compute_target\":\"ML-Cluster\",\"enable_dnn\":true,\"enable_code_generation\":false,\"experiment_exit_score\":null,\"experiment_timeout_minutes\":30,\"featurization\":\"auto\",\"is_timeseries\":false,\"iteration_timeout_minutes\":30,\"max_concurrent_iterations\":2,\"metric_operation\":\"maximize\",\"model_explainability\":true,\"n_cross_validations\":null,\"name\":\"Sinter_AML\",\"path\":\"./sample_projects/Sinter_AML\",\"primary_metric\":\"AUC_weighted\",\"region\":\"southcentralus\",\"resource_group\":\"aml-quickstarts-161186\",\"subscription_id\":\"1b944a9b-fdae-4f97-aeb1-b7eea0beac53\",\"task_type\":\"classification\",\"validation_size\":0.1,\"test_size\":null,\"vm_type\":\"STANDARD_D2_V2\",\"workspace_name\":\"quick-starts-ws-161186\",\"label_column_name\":\"HAS SCRAP AT SINTER\",\"positive_label\":null,\"enable_batch_run\":true,\"enable_run_restructure\":true}",
+        "DataPrepJsonString": "{\\\"datasets\\\":0,\\\"training_data\\\":{\\\"datasetId\\\":\\\"1b838023-e742-499a-91e4-9a46f100415c\\\"}}",
+        "EnableSubsampling": "False",
+        "runTemplate": "AutoML",
+        "azureml.runsource": "automl",
+        "_aml_system_scenario_identification": "Remote.Parent",
+        "ClientType": "Browser",
+        "environment_cpu_name": "AzureML-AutoML-DNN",
+        "environment_cpu_label": "prod",
+        "environment_gpu_name": "AzureML-AutoML-DNN-GPU",
+        "environment_gpu_label": "prod",
+        "root_attribution": "automl",
+        "attribution": "AutoML",
+        "Orchestrator": "AutoML",
+        "CancelUri": "https://southcentralus.api.azureml.ms/jasmine/v1.0/subscriptions/1b944a9b-fdae-4f97-aeb1-b7eea0beac53/resourceGroups/aml-quickstarts-161186/providers/Microsoft.MachineLearningServices/workspaces/quick-starts-ws-161186/experiment/Sinter_AML/cancel/AutoML_b6f416b0-a964-40da-bfaa-4a40dda2c1af",
+        "ClientSdkVersion": "1.34.1",
+        "snapshotId": "00000000-0000-0000-0000-000000000000",
+        "SetupRunId": "AutoML_b6f416b0-a964-40da-bfaa-4a40dda2c1af_setup",
+        "SetupRunContainerId": "dcid.AutoML_b6f416b0-a964-40da-bfaa-4a40dda2c1af_setup"
+    },
+    "parameters": {},
+    "services": {},
+    "inputDatasets": [
+        {
+            "identifier": {
+                "savedId": "1b838023-e742-499a-91e4-9a46f100415c",
+                "registeredId": null,
+                "registeredVersion": null
+            },
+            "consumptionType": "RunInput",
+            "inputDetails": {
+                "inputName": "training_data",
+                "mechanism": "Direct",
+                "pathOnCompute": null
+            }
+        }
+    ],
+    "outputDatasets": [],
+    "runDefinition": null,
+    "logFiles": {},
+    "jobCost": null,
+    "revision": 5,
+    "runTypeV2": {
+        "orchestrator": "AutoML",
+        "traits": [
+            "automl",
+            "Remote.Parent"
+        ],
+        "attribution": null,
+        "computeType": null
+    },
+    "settings": {},
+    "computeRequest": null,
+    "createdBy": {
+        "userObjectId": "4a4471f0-3400-4474-b45c-40dde92892a0",
+        "userPuId": "1003200197CD11BF",
+        "userIdp": null,
+        "userAltSecId": null,
+        "userIss": "https://sts.windows.net/660b3398-b80e-49d2-bc5b-ac1dc93b5254/",
+        "userTenantId": "660b3398-b80e-49d2-bc5b-ac1dc93b5254",
+        "userName": "ODL_User 161186",
+        "upn": "odl_user_161186@udacitylabs.onmicrosoft.com"
+    },
+    "computeDuration": null,
+    "effectiveStartTimeUtc": "2021-10-16T14:07:44.9324205+00:00",
+    "runNumber": 1,
+    "rootRunId": "AutoML_b6f416b0-a964-40da-bfaa-4a40dda2c1af",
+    "userId": "4a4471f0-3400-4474-b45c-40dde92892a0",
+    "statusRevision": 0,
+    "hasVirtualParent": false,
+    "currentComputeTime": null,
+    "lastStartTimeUtc": "2021-10-16T14:07:44.9324205+00:00",
+    "lastModifiedBy": {
+        "userObjectId": "4a4471f0-3400-4474-b45c-40dde92892a0",
+        "userPuId": "1003200197CD11BF",
+        "userIdp": null,
+        "userAltSecId": null,
+        "userIss": "https://sts.windows.net/660b3398-b80e-49d2-bc5b-ac1dc93b5254/",
+        "userTenantId": "660b3398-b80e-49d2-bc5b-ac1dc93b5254",
+        "userName": "ODL_User 161186",
+        "upn": "odl_user_161186@udacitylabs.onmicrosoft.com"
+    },
+    "lastModifiedUtc": "2021-10-16T14:07:43.3645269+00:00"
+}
