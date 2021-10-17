@@ -12,9 +12,9 @@ from azureml.data.dataset_factory import TabularDatasetFactory
 
 # Create TabularDataset using TabularDatasetFactory
 # Data is located at:
-data_path = "Sinter_data.csv"
+data_path = "data-unbalanced.csv"
 
-ds = TabularDatasetFactory.from_delimited_files(path=data_path)
+ds = pd.read_csv(data_path)
 
 def clean_data(data):
     # Clean the data
