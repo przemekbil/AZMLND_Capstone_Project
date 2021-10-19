@@ -16,6 +16,7 @@ def run(raw_data):
     print(raw_data)
 
     data = np.array(json.loads(raw_data)['data'])
+    data = pd.DataFrame(data)
     # make prediction
     y_hat = model.predict(data)
     # you can return any data type as long as it is JSON-serializable
