@@ -12,7 +12,7 @@ from azureml.data.dataset_factory import TabularDatasetFactory
 
 # Create TabularDataset using TabularDatasetFactory
 # Data is located at:
-data_path = "data-unbalanced.csv"
+data_path = "./data/balanced.csv"
 
 ds = pd.read_csv(data_path)
 
