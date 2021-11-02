@@ -1,11 +1,12 @@
-*NOTE:* This file is a template that you can use to create the README for your project. The *TODO* comments below will highlight the information you should be sure to include.
+# UDACITY Machine Learning Engineer with Microsoft Azure - Capstone project
 
-# Your Project Title Here
-
-*TODO:* Write a short introduction to your project.
+This is the final project for my Machine Learning Engineer with Microsoft Azure course. In this project I have used both hyperdrive and automl modules to trin a classification model on a dataset sourced from the production data in TiPorocoat Value Stream. The classification models are trying to predict if there is going to be failig parts in the production batch based on the processing inormation.
 
 ## Project Set Up and Installation
 *OPTIONAL:* If your project has any special installation steps, this is where you should put it. To turn this project into a professional portfolio project, you are encouraged to explain how to set up this project in AzureML.
+
+![image](https://user-images.githubusercontent.com/77756713/139918574-ef68310a-0d88-4c24-83f1-e6eb69748598.png)
+
 
 ## Dataset
 
@@ -51,7 +52,11 @@
 *TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
 
 ## Screen Recording
-*TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
+
+Below is the link to the screencast recording: 
+https://www.youtube.com/watch?v=p2hWM2vxlGw
+
+It contins a brief overview of the following:
 - A working model
 - Demo of the deployed  model
 - Demo of a sample request sent to the endpoint and its response
