@@ -30,7 +30,9 @@ In the project, I have used production data from the TiPorocoat value stream dow
 |PREPED IN THE SHIFT SO FAR | integer | Number of parts prepared by an Associate in the shift prior to current batch |
 |HOURS PREP TO FUR	| integer| Number of hours that passed from prep operation until the Furnace operation|
 |ASSOCIATE EXPERIENCE| 0-3| Associates experience in manual preparation based on amount of parts prepared so far|
-|Prep Week| 1-43| Number of week at which parts were manually prepped|
+|Prep Week| 1-42| Number of week at which parts were manually prepped|
+|FURN| String| Identifier of the Asset at which sintering process took place|
+|HAS SCRAP AT SINTER|0,1 | | |
 
 
 ### Task
