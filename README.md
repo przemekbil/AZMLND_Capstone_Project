@@ -32,7 +32,7 @@ In the project, I have used production data from the TiPorocoat value stream dow
 |ASSOCIATE EXPERIENCE| 0-3| Associates experience in manual preparation based on amount of parts prepared so far|
 |Prep Week| 1-42| Number of week at which parts were manually prepped|
 |FURN| String| Identifier of the Asset at which sintering process took place|
-|HAS SCRAP AT SINTER|0,1 | | |
+|HAS SCRAP AT SINTER|0,1 | Identifier if batch has failing parts after sinter process - the variable we are trying to predict| 
 
 
 ### Task
@@ -44,19 +44,52 @@ In the project, I have used production data from the TiPorocoat value stream dow
 ## Automated ML
 *TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
 
+in my AutoML run, I have used the following settings:
+
+```
+
+automl_settings = {
+    "experiment_timeout_minutes": 20,
+    "max_concurrent_iterations": 5,
+    "primary_metric" : 'accuracy'
+}
+```
+
+And the following configuration:
+
+```
+
+automl_config = AutoMLConfig(compute_target=cpu_cluster,
+                             task = "classification",
+                             training_data=dataset,
+                             label_column_name="HAS SCRAP AT SINTER",
+                             enable_early_stopping= True,
+                             featurization= 'auto',
+                             debug_log = "automl_errors.log",
+                             **automl_settings
+                            )
+
+```
 
 
 
 ### Results
 *TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
 
+The model with the best accuracy was obtained using VoitingEnsemble Algorithm and it's accuracy was 0.64234:
+
+![image](https://user-images.githubusercontent.com/77756713/139940126-ae578f6e-a398-4462-b924-2439cebff859.png)
+
+Its all parameters are listed in the table below:
+
+![image](https://user-images.githubusercontent.com/77756713/138364402-82736541-11d9-46f5-a320-dbbb82bdac2f.png)
 
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+
 ![image](https://user-images.githubusercontent.com/77756713/138364289-81f7a2c3-8fd7-4a85-ba16-b991ad19d9b6.png)
 
 
-![image](https://user-images.githubusercontent.com/77756713/138364402-82736541-11d9-46f5-a320-dbbb82bdac2f.png)
+
 
 ## Hyperparameter Tuning
 *TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
