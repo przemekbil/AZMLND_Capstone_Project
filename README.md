@@ -13,7 +13,25 @@ To make sure project runs correctly in the Azure ML Studio environment, create f
 
 ### Overview
 
-In this project, I have used production data from the TiPorocoat value stream downloaded from our MES (Manufacturing Execution System). This data spa
+In the project, I have used production data from the TiPorocoat value stream downloaded from our MES (Manufacturing Execution System). The data for training was taken from this year to date (WK1-WK42 of 2021).
+
+| Column name | Data type |column Explanation|
+|---------|--|------------|
+|WO-MRR NUM| Integer |Unique production batch idntifier|
+|IS REWORK| 0,1| identifier wheter or not batch goes through processing fo the second time|
+|PROD_CDE| String| Product code|
+|HOURS BLAST TO PREP | Integer |Number of hours that passed from Blast operation until Manual preparation|
+|PREP DAY |1-7| Day of week at which batch was manually prepared|
+|PREP SHIFT|1,2| Shift at which batch was prepared|
+|PREP H |0-23| Hour at which batch was prepared|
+|PREP QTY| Integer| Numer of parts in the batch at manual preparation step |
+|PREP ASSOCIATE | Integer| Unique identifier of an Associate preparing the batch |
+|PREP QTY IN THE SHIFT | Integer| Number of parts prepared by associate in the current shift|
+|PREPED IN THE SHIFT SO FAR | integer | Number of parts prepared by an Associate in the shift prior to current batch |
+|HOURS PREP TO FUR	| integer| Number of hours that passed from prep operation until the Furnace operation|
+|ASSOCIATE EXPERIENCE| 0-3| Associates experience in manual preparation based on amount of parts prepared so far|
+|Prep Week| 1-43| Number of week at which parts were manually prepped|
+
 
 ### Task
 *TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.
