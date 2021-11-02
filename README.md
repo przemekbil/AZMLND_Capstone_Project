@@ -3,7 +3,8 @@
 This is the final project for my Machine Learning Engineer with Microsoft Azure course. In this project I have used both hyperdrive and automl modules to trin a classification model on a dataset sourced from the production data in TiPorocoat Value Stream. The classification models are trying to predict if there is going to be failig parts in the production batch based on the processing inormation.
 
 ## Project Set Up and Installation
-*OPTIONAL:* If your project has any special installation steps, this is where you should put it. To turn this project into a professional portfolio project, you are encouraged to explain how to set up this project in AzureML.
+
+To make sure project runs correctly in the Azure ML Studio environment, create folders 'source_dir' and 'data'. Copy datafile 'balanced.csv' into the 'data' folder and both Python scripts into the 'source_dir' folder as per the screenshot below:
 
 ![image](https://user-images.githubusercontent.com/77756713/139918574-ef68310a-0d88-4c24-83f1-e6eb69748598.png)
 
@@ -11,7 +12,8 @@ This is the final project for my Machine Learning Engineer with Microsoft Azure 
 ## Dataset
 
 ### Overview
-*TODO*: Explain about the data you are using and where you got it from.
+
+In this project, I have used production data from the TiPorocoat value stream downloaded from our MES (Manufacturing Execution System). This data spa
 
 ### Task
 *TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.
