@@ -138,7 +138,7 @@ There are 2 parameters sweeping modes available in Azure ML: Entire grid and Ran
 
 For early stopping policy, I selected a BanditPolicy class. This policy compares the current training run with the best performing run and terminates it if it’s performance metric drops below calculated threshold. The main benefit of using this policy comparing to the other 2 policies is that the current runs are terminated after comparing with the best performing run. If the current run performance drops greatly below the best run's performance, it will be terminated. 
 
-The parameters I used in my pipeline:
+The parameters I used in my experiment:
 ```
 policy = BanditPolicy(slack_factor=0.05, evaluation_interval=5, delay_evaluation=10)
 ```
@@ -147,13 +147,33 @@ would cause each run to be compared with the best performing run after each 5 al
 ### Results
 *TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+The best run was achieved with C= 60.8728 and max_iter=100 and the resulting model have reported Accuracy of 0.676:
+
 
 ![image](https://user-images.githubusercontent.com/77756713/138364877-faf83d3f-4aaa-436f-aa87-1797f608ce99.png)
 
 
+I have also run an experiment with a BayesianParameterSampling instead of RandomParameterSampling and the result were similar, the best performing model had Accuracy of 0.670, which is just below the accuracy of the previous experiment:
+
+![image](https://user-images.githubusercontent.com/77756713/140111446-26294964-f63f-4030-8c2e-52b4e73a0f47.png)
+
+
 ## Model Deployment
-*TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
+
+The model with the highest Accuarcy came from the Hyperparameter Tuning run and its reported Accuracy is 0.676. As the best performing model, this model has been selected for deployment. It got deployed as an endpoint 'sinter-scrap-model2':
+
+![image](https://user-images.githubusercontent.com/77756713/140139583-f7a1781a-427d-40ec-9b0c-1f71775986cb.png)
+
+To query the endpoint, data has to have the same format as in the [Sample_input file](Sample_input) and it has to contain all the 83 columns listed in this file. The best way to create sample input dataset like that is to apply the follwoing operations on the raw production data:
+
+```
+raw_data = pd.read_csv('./data/balanced.csv')
+raw_data = raw_data.dropna()
+raw_data = raw_data.drop("WO-MRR NUM", axis=1)
+raw_data = raw_data.drop("Has MRR", axis=1)
+raw_data = pd.get_dummies(raw_data, columns=['PROD_CDE','PREP ASSOCIATE', 'FURN'])
+```
+
 
 ## Screen Recording
 
@@ -165,5 +185,3 @@ It contins a brief overview of the following:
 - Demo of the deployed  model
 - Demo of a sample request sent to the endpoint and its response
 
-## Standout Suggestions
-*TODO (Optional):* This is where you can provide information about any standout suggestions that you have attempted.
