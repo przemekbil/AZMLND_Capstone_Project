@@ -58,9 +58,8 @@ For the use in the AutoML module, I have completed all the data cleanup and prep
 For the use in the Hyperparameter Tuning module, I have completed all the data cleanup and preperation inside the 'train.py' script. There was no need to register it as a Dataset as all the data was accessed direcltly from the uploaded csv file.
 
 ## Automated ML
-*TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
 
-in my AutoML run, I have used the following settings:
+In the AutoML run, I have used the following settings:
 
 ```
 automl_settings = {
@@ -95,22 +94,36 @@ automl_config = AutoMLConfig(compute_target=cpu_cluster,
 
 
 ### Results
-*TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
 
 The model with the best accuracy was obtained using VoitingEnsemble Algorithm and it's accuracy was 0.64234:
 
 ![image](https://user-images.githubusercontent.com/77756713/139940126-ae578f6e-a398-4462-b924-2439cebff859.png)
 
-Its all parameters are listed in the table below:
-
-![image](https://user-images.githubusercontent.com/77756713/138364402-82736541-11d9-46f5-a320-dbbb82bdac2f.png)
-
-
-
 ![image](https://user-images.githubusercontent.com/77756713/138364289-81f7a2c3-8fd7-4a85-ba16-b991ad19d9b6.png)
 
+The VotingEnsemble was constructed out of previous best performing unique runs, with individual weights assigned to each of them to optimize the overall performance. The inner estimators, their weights, Iteration number and original metrics are listed in the table below:
+
+ITERATION | Algorithm | Weight | Metric |
+--- | --- | --- | --- |
+13 | maxabsscaler, sgdclassifierwrapper | 0.3 | 0.6355 | 
+7 | maxabsscaler,	logisticregression |	0.1 | 0.6329|
+12|	maxabsscaler,	logisticregression|	0.1|0.6329|
+16|	standardscalerwrapper,	logisticregression|	0.1|0.6309	|
+20|	truncatedsvdwrapper,	randomforestclassifier|	0.1|0.6295	|
+0|	maxabsscaler,	lightgbmclassifier|	0.1|0.6225	|
+11|	standardscalerwrapper,	xgboostclassifier|	0.1|0.6074	|
+31|	maxabsscaler,	extratreesclassifier|	0.1|0.5555	|
 
 
+According to the best performing model, top 4 features (columns) with the largest importance were: Prep week, Quantity prepared in the shift, Prep hour adn prep quantity:
+![image](https://user-images.githubusercontent.com/77756713/140066576-4b8c528e-3d45-4d77-b5b5-c83c16393c6b.png)
+
+
+The confusion table for this model is presented below:
+
+![image](https://user-images.githubusercontent.com/77756713/140067200-1d585c6f-4eff-4de6-8bf9-ddd0940b6aee.png)
+
+Although the models accuracy is moderate 64%, at least it seems to be well balanced.
 
 ## Hyperparameter Tuning
 *TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
