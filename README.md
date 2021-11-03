@@ -164,7 +164,7 @@ The model with the highest Accuarcy came from the Hyperparameter Tuning run and 
 
 ![image](https://user-images.githubusercontent.com/77756713/140139583-f7a1781a-427d-40ec-9b0c-1f71775986cb.png)
 
-To query the endpoint, data has to have the same format as in the [Sample_input file](Sample_input) and it has to contain all the 83 columns listed in this file. The best way to create sample input dataset like that is to apply the follwoing operations on the raw production data:
+To query the endpoint, the input data has to have the same format as in the [Sample_input file](Sample_input) and it has to contain all the 83 columns listed in this file. The best way to create sample input dataset like that is to apply the follwoing operations on the raw production data:
 
 ```
 raw_data = pd.read_csv('./data/balanced.csv')
