@@ -47,18 +47,24 @@ In the project, I have used production data from the TiPorocoat value stream dow
 in my AutoML run, I have used the following settings:
 
 ```
-
 automl_settings = {
-    "experiment_timeout_minutes": 20,
-    "max_concurrent_iterations": 5,
+    "experiment_timeout_minutes": 40,
+    "max_concurrent_iterations": 2,
     "primary_metric" : 'accuracy'
 }
 ```
 
+```experiment_timeout_minutes``` - It defines in minutes the experiment run time. 
+
+```max_concurrent_iterations``` - Represents the maximum number of iterations that would be executed in parallel. The computer cluster used in this experiment have 2 nodes, 1 experiment per node can be run concurently so the ```max_concurrent_iterations``` was set to 2
+
+```primary_metric``` - the metric that AutoML will optimize for the model selection. I selected the same metric as in the hyperparameter tuning method: accuracy.
+
+
+
 And the following configuration:
 
 ```
-
 automl_config = AutoMLConfig(compute_target=cpu_cluster,
                              task = "classification",
                              training_data=dataset,
@@ -68,7 +74,6 @@ automl_config = AutoMLConfig(compute_target=cpu_cluster,
                              debug_log = "automl_errors.log",
                              **automl_settings
                             )
-
 ```
 
 
