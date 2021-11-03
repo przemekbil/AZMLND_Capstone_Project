@@ -13,7 +13,19 @@ To make sure project runs correctly in the Azure ML Studio environment, create f
 
 ### Overview
 
-In the project, I have used production data from the TiPorocoat value stream downloaded from our MES (Manufacturing Execution System). The data for training was taken from this year to date (WK1-WK42 of 2021).
+In the project, I have used production data from the TiPorocoat value stream downloaded from our MES (Manufacturing Execution System). This data was taken from this years live production records (WK1-WK42 of 2021).
+
+The production process in TiPorocoat value stream consists of 4 major steps: 
+
+![image](https://user-images.githubusercontent.com/77756713/140050169-524ca5f5-c874-4df9-9be0-9ec9a508cf0d.png)
+
+First, parts are blasted with dry media to create a rough surface that will help binding agent to stick to the parts. Next step is the most important one, Manual preparation. In this step, Associates manually apply binding agent to the parts and then apply thin layer of Titatium beads. Parts are then moved to the Sintering Furnace, where the binding agent evaporates and the beads under the high temperature are fused with the parts. The last step is the Visual Ispection, where parts are inspected for the quality of the beads coating.
+
+It has been well known, that because of the manual process of the coating preparation, the biggest influence on the quality of the coating (and the scrap ratio after Visual Inspection) had Associates technique and experience. Parts prepared by some of the Associates tend to have better quality coating than the others. 
+
+### Task
+
+The aim of this project is to trying to predict which production batches (identified by the WO-MRR NUM) will have parts failing Visual Inspection step (HAS SCRAP AT SINTER=1) and which ones will have all parts passing the inspection (HAS SCRAP AT SINTER = 0). I will use 14 below independent variables to try to achieve that:
 
 | Column name | Data type |column Explanation|
 |---------|--|------------|
@@ -35,11 +47,15 @@ In the project, I have used production data from the TiPorocoat value stream dow
 |HAS SCRAP AT SINTER|0,1 | Identifier if batch has failing parts after sinter process - the variable we are trying to predict| 
 
 
-### Task
-*TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.
+
 
 ### Access
-*TODO*: Explain how you are accessing the data in your workspace.
+
+I have uploaded my data manually as a csv file into the 'data' dolder.
+
+For the use in the AutoML module, I have completed all the data cleanup and preparation inside my automl notebook and then I have registered resulting Pandas dataframe as a Dataset called 'Sinter' withing the Azure environment. The AutoML run is accessing the 'Sinter' Dataset directly.
+
+For the use in the Hyperparameter Tuning module, I have completed all the data cleanup and preperation inside the 'train.py' script. There was no need to register it as a Dataset as all the data was accessed direcltly from the uploaded csv file.
 
 ## Automated ML
 *TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
@@ -54,7 +70,7 @@ automl_settings = {
 }
 ```
 
-```experiment_timeout_minutes``` - It defines in minutes the experiment run time. 
+```experiment_timeout_minutes``` - It defines in minutes the experiment run time. I have run the experiment with minutes set to 20 and then to 40. There was no measuremble improvement in the eccuracy of the best model.
 
 ```max_concurrent_iterations``` - Represents the maximum number of iterations that would be executed in parallel. The computer cluster used in this experiment have 2 nodes, 1 experiment per node can be run concurently so the ```max_concurrent_iterations``` was set to 2
 
