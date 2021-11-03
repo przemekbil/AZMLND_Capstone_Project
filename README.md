@@ -99,9 +99,11 @@ The model with the best accuracy was obtained using VoitingEnsemble Algorithm an
 
 ![image](https://user-images.githubusercontent.com/77756713/139940126-ae578f6e-a398-4462-b924-2439cebff859.png)
 
+Screenshot of the RunDetails widget showing progress of the training runs for AutoML experiment:
+
 ![image](https://user-images.githubusercontent.com/77756713/138364289-81f7a2c3-8fd7-4a85-ba16-b991ad19d9b6.png)
 
-The VotingEnsemble was constructed out of previous best performing unique runs, with individual weights assigned to each of them to optimize the overall performance. The inner estimators, their weights, Iteration number and original metrics are listed in the table below:
+The best performing model from the AutoML experiment, the VotingEnsemble model was constructed out of previous best performing unique runs, with individual weights assigned to each of them to optimize the overall performance. The inner estimators, their weights, Iteration number and original metrics are listed in the table below:
 
 ITERATION | Algorithm | Weight | Metric |
 --- | --- | --- | --- |
@@ -145,17 +147,20 @@ policy = BanditPolicy(slack_factor=0.05, evaluation_interval=5, delay_evaluation
 would cause each run to be compared with the best performing run after each 5 algorithm runs (starting after first 10 runs) and if the run’s performance drops below 95% of current best run performance, then it would get terminated.
 
 ### Results
-*TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
 
-The best run was achieved with C= 60.8728 and max_iter=100 and the resulting model have reported Accuracy of 0.676:
+The best run was achieved with C= 60.8728 and max_iter=100 and the resulting model have reported Accuracy of 0.676.
 
+Below is the Screenshot of the RunDetails widget showing progress of the training runs for the Hyperparameter Tuning experiment, with the best performing model and its RunID and hyperparameters highlighted:
 
-![image](https://user-images.githubusercontent.com/77756713/138364877-faf83d3f-4aaa-436f-aa87-1797f608ce99.png)
+![image](https://user-images.githubusercontent.com/77756713/140195680-8b7541b7-d047-499f-bdc1-7dccf0006778.png)
+
 
 
 I have also run an experiment with a BayesianParameterSampling instead of RandomParameterSampling and the result were similar, the best performing model had Accuracy of 0.670, which is just below the accuracy of the previous experiment:
 
 ![image](https://user-images.githubusercontent.com/77756713/140111446-26294964-f63f-4030-8c2e-52b4e73a0f47.png)
+
+
 
 
 ## Model Deployment
