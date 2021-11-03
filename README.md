@@ -126,8 +126,23 @@ The confusion table for this model is presented below:
 Although the models accuracy is moderate 64%, at least it seems to be well balanced.
 
 ## Hyperparameter Tuning
-*TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
 
+Because I was trying to solve a classification problem (1-batch has failing parts or 0-batch has all good parts) I choosed to use LogisticRegression algorithm from sklearn library. 2 parameters have been adjusted through HyperDrive: inverse of regularization strength (parameter C) and Maximum number of iterations taken for the solver to converge (max_iter).
+
+The larger the regularization strength (smaller values of C parameter) the higher the penalty for increasing the magnitude of parameters. This is to prevent overfitting the model to the train data and make it more general i.e. also applicable to the unseen test data.
+
+There are 2 parameters sweeping modes available in Azure ML: Entire grid and Random Sweep. Entire grid sweep is exhaustive, tends to give slightly better results but is time consuming. Random sweep in contrast offers good results without taking as much time. For this project, I'm going for the Random sweep using RandomParameterSampler Class using the following search spaces:
+
+* max_iter parameter will be selected out of 4 predefined values (50, 100, 200, or 400)
+* C parameter will be randomly pooled from the interval between exp(-10) to exp(10) using logunifrom distribution. Since the parameter C represents the inverse of the regularization strength, logunifrom distribution has been selected to attain distribution of regularization strength as close to uniform as possible.
+
+For early stopping policy, I selected a BanditPolicy class. This policy compares the current training run with the best performing run and terminates it if it’s performance metric drops below calculated threshold. The main benefit of using this policy comparing to the other 2 policies is that the current runs are terminated after comparing with the best performing run. If the current run performance drops greatly below the best run's performance, it will be terminated. 
+
+The parameters I used in my pipeline:
+```
+policy = BanditPolicy(slack_factor=0.05, evaluation_interval=5, delay_evaluation=10)
+```
+would cause each run to be compared with the best performing run after each 5 algorithm runs (starting after first 10 runs) and if the run’s performance drops below 95% of current best run performance, then it would get terminated.
 
 ### Results
 *TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
